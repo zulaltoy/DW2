@@ -8,6 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # tijdens de installatie van Apache
 RUN apt install -y apache2
 RUN apt install -y php
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 COPY html /var/www/html/
 # Kopieer de inhoud van “html” (op de host)
 # naar “/var/www/html” (in de image).
@@ -38,3 +39,4 @@ CMD service apache2 start && bash
 # na het uitvoeren van “service apache2 start”.
 # Het commando “bash” blijft immers “hangen”,
 # tot je binnen bash “exit” tikt.
+
